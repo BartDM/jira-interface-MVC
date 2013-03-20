@@ -1,0 +1,180 @@
+﻿@model JiraInterface.Models.CreateIssue
+
+@{
+    ViewBag.Title = "Meld een nieuwe onvolkomenheid";
+}
+
+@section style
+{
+    <style type="text/css">
+        textarea
+        {
+            width: 685px;
+            height: 250px;
+        }
+
+        #DocumentChapter
+        {
+            width: 300px;
+        }
+
+        .field-validation-error
+        {
+            color: #b94a48;
+        }
+    </style>
+}
+<h2>Meld een nieuwe onvolkomenheid</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="span12">
+        <fieldset>
+            <legend>Algemeen</legend>
+
+            <div class="row">
+                <div class="span2">
+                    Opgemaakt door:*
+                </div>
+                <div class="span6">
+                    @Html.TextBoxFor(model => model.Reporter, new { @class = "span6" })
+
+                </div>
+                <div class="span4">
+                    @Html.ValidationMessageFor(model => model.Reporter)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                    Contactgegevens
+                </div>
+                <div class="span4">
+                    <div class="input-prepend">
+                        <span class="add-on">@@</span>
+                        @Html.TextBoxFor(model => model.Email, new { @class = "span3", placeholder = "Email" })
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="input-prepend">
+                        <span class="add-on"><i class="icon-bell"></i></span>
+                        <input class="span3" id="Tel" type="text" placeholder="Telefoon" name="Tel" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span6 offset2">
+                    @Html.ValidationMessageFor(model => model.Email)
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">Datum</div>
+                <div class="span3">
+                    <input type="text" disabled="disabled" name="DateTime" id="DateTime" value="@DateTime.Now.ToShortDateString()" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">Deel acceptatie test</div>
+                <div class="span3">
+                    <input type="text" disabled="disabled" name="Fase" id="Fase" value="@ViewBag.Version"/>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Onvolkomenheid</legend>
+            <div class="row">
+                <div class="span2">Titel*</div>
+                <div class="span3">
+                    @Html.TextBoxFor(model => model.Title, new { @class = "span9" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4 offset2 error">
+                    @Html.ValidationMessageFor(model => model.Title)
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="span2">Omschrijving*</div>
+                <div class="span10">
+                    @Html.TextAreaFor(model => model.Description)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span4 offset2 error">
+                    @Html.ValidationMessageFor(model => model.Description)
+                </div>
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <p>
+                        Hieronder kan u aangeven waar de onvolkomenheid niet voldoet zoals beschreven in
+                        het document bijlage 2 van de prijsovereenkomst "Implementatie en maatwerk" dd 19/03/2013.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">Hoofstuk</div>
+                <div class="span4">
+                    <select name="DocumentChapter" id="DocumentChapter">
+                        @foreach (var item in ViewBag.Chapters)
+                        {
+                            <option>@item</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">Onderdeel</div>
+                <div class="span6">
+                    <input type="text" name="DocumentItem" id="DocumentItem" class="span4" />
+
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Prioriteit</legend>
+            <div class="row">
+                <div class="span2">Is deze onvolkomenheid:</div>
+                <div class="span10">
+                    @foreach (var prio in ViewBag.Priorities)
+                    {
+                        <label class="radio">
+                            <input type ="radio" name="Priority" id="@prio.Id" value="@prio.Id"  title="@prio.Name" 
+                                @if (prio.Id == 4)
+                                {
+                                    @: checked="checked"
+                                }
+                                />
+                            @prio.Name - @prio.Description
+                        </label>
+                    }
+
+                </div>
+            </div>
+        </fieldset>
+        <div class="row">
+            <div class="span1">
+                <input type="submit" class="btn btn-primary" name="Save" id="Save" value="Creëer" />
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="span2 offset10">
+        @Html.ActionLink("Terug naar de lijst", "Index")
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+//        $("form").submit(function () {
+//            $("#Save").disable();
+//        });
+    </script>
+}
