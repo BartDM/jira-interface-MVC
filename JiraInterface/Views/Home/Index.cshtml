@@ -132,9 +132,9 @@
             {
                 foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        <span
+                    <tr>
+                        <td>
+                            <span
                                 @switch (item.Priority.Id)
                                 {
                                     case "1":
@@ -156,15 +156,15 @@
                                         break;
                                 }
                                 >
-                            @item.Priority.Name
-                        </span>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Key.Value)
-                    </td>
+                                @item.Priority.Name
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key.Value)
+                        </td>
 
-                    <td>
-                        <span 
+                        <td>
+                            <span 
                                 @switch (item.Status.Id)
                                 {
                                     case "1":
@@ -193,31 +193,31 @@
                                 }
                                 >
 
-                            @Html.DisplayFor(modelItem => item.Status.Name)
-                        </span>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Summary)
-                        <br />
-                        <span class="description" data-content="@item.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
-                            meer...</span>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Environment)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Created)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Updated)
-                    </td>
-                    <td>
-                        @item.AffectsVersions.FirstOrDefault()
-                    </td>
-                    <td>
-                        @item.FixVersions.FirstOrDefault()
-                    </td>
-                </tr>
+                                @Html.DisplayFor(modelItem => item.Status.Name)
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Summary)
+                            <br />
+                            <span class="description" data-content="@item.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                                meer...</span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Environment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated)
+                        </td>
+                        <td>
+                            @item.AffectsVersions.FirstOrDefault()
+                        </td>
+                        <td>
+                            @item.FixVersions.FirstOrDefault()
+                        </td>
+                    </tr>
                 }
             }
             else
@@ -230,6 +230,12 @@
         </tbody>
     </table>
 </fieldset>
+
+<div class="row">
+    <div class="span4 offset9">
+        <a href="http://www.abc-groep.be" target="_blank"><img src="http://www.abc-groep.be/siteImages/ABC/logo.jpg" alt="ABC-Groep" title="ABC-Groep"/></a>
+    </div>
+</div>
 @section scripts
 {
     <script type="text/javascript">
