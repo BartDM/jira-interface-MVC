@@ -7,6 +7,25 @@
     @Styles.Render("~/Content/css")
     @RenderSection("style", required: false)
     @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .description
+        {
+            text-decoration: underline;
+            color: #0088cc;
+            cursor: pointer;
+        }
+
+        .popover-content
+        {
+            width: 600px;
+            white-space: pre-line;
+        }
+
+        .popover
+        {
+            max-width: 620px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,8 +40,10 @@
                 <a class="brand" href="#">Z-Group Monitoring Suite V2</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active">
-                            <a href="@Url.Action("Index","Home")">Home</a>
+                        <li>
+                            <a href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li><a href="@Url.Action("Index", "Version")">Versie</a>
                         </li>
                     </ul>
                 </div>

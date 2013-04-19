@@ -148,16 +148,18 @@ namespace JiraInterface.Controllers
         private void Mail(string title)
         {
             var emailAddresses = Helpers.Data.GetEmailAddresses();
-
-
-            var mm = new MailMessage(emailAddresses.Item1, emailAddresses.Item2);
-            mm.Body = string.Format("ZGROUP: Er is een nieuwe onvolkomenheid gemeld: {0}", title);
-            mm.BodyEncoding = new UTF8Encoding();
-            mm.IsBodyHtml = false;
-            mm.Subject = mm.Body;
-
             var client = new SmtpClient();
-            client.Send(mm);
+
+            foreach (var emailAddress in emailAddresses)
+            {
+                var mm = new MailMessage(emailAddress.Item1, emailAddress.Item2);
+                mm.Body = string.Format("ZGROUP: Er is een nieuwe onvolkomenheid gemeld: {0}", title);
+                mm.BodyEncoding = new UTF8Encoding();
+                mm.IsBodyHtml = false;
+                mm.Subject = mm.Body;
+
+                client.Send(mm);
+            }
         }
     }
 }

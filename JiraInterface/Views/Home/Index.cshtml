@@ -24,22 +24,6 @@
             cursor: pointer;
         }
 
-        .description
-        {
-            text-decoration: underline;
-            color: #0088cc;
-            cursor: pointer;
-        }
-
-        .popover-content
-        {
-            width: 600px; white-space: pre-line;
-        }
-
-        .popover
-        {
-            max-width: 620px;
-        }
     </style>
 }
 
@@ -212,10 +196,10 @@
                             @Html.DisplayFor(modelItem => item.Updated)
                         </td>
                         <td>
-                            @item.AffectsVersions.FirstOrDefault()
+                            <a href="/Version#@item.AffectsVersions.FirstOrDefault()">@item.AffectsVersions.FirstOrDefault()</a>
                         </td>
                         <td>
-                            @item.FixVersions.FirstOrDefault()
+                             <a href="/Version#@item.FixVersions.FirstOrDefault()">@item.FixVersions.FirstOrDefault()</a>
                         </td>
                     </tr>
                 }
