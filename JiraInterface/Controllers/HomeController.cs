@@ -17,6 +17,24 @@ namespace JiraInterface.Controllers
         private IEnumerable<IssuePriority> priorities;
         private IEnumerable<IssueStatus> statusses;
 
+        private void Mail(string title)
+        {
+            var emailAddresses = Helpers.Data.GetEmailAddresses();
+            var client = new SmtpClient();
+
+            foreach (var emailAddress in emailAddresses)
+            {
+                var mm = new MailMessage(emailAddress.Item1, emailAddress.Item2);
+                mm.Body = string.Format("ZGROUP: Er is een nieuwe onvolkomenheid gemeld: {0}", title);
+                mm.BodyEncoding = new UTF8Encoding();
+                mm.IsBodyHtml = false;
+                mm.Subject = mm.Body;
+
+                client.Send(mm);
+            }
+        }
+
+
         public HomeController()
         {
             var credentials = Helpers.Data.GetJiraCredentials();
@@ -145,21 +163,5 @@ namespace JiraInterface.Controllers
             }
         }
 
-        private void Mail(string title)
-        {
-            var emailAddresses = Helpers.Data.GetEmailAddresses();
-            var client = new SmtpClient();
-
-            foreach (var emailAddress in emailAddresses)
-            {
-                var mm = new MailMessage(emailAddress.Item1, emailAddress.Item2);
-                mm.Body = string.Format("ZGROUP: Er is een nieuwe onvolkomenheid gemeld: {0}", title);
-                mm.BodyEncoding = new UTF8Encoding();
-                mm.IsBodyHtml = false;
-                mm.Subject = mm.Body;
-
-                client.Send(mm);
-            }
-        }
     }
 }
