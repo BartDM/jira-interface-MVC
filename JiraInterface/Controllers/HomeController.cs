@@ -160,6 +160,12 @@ namespace JiraInterface.Controllers
 
                 client.Send(mm);
             }
+
+            //ADDED SOME LINES TO TEST MERGE
+            //ADDED SOME LINES TO TEST MERGE
+            //ADDED SOME LINES TO TEST MERGE
+            //ADDED SOME LINES TO TEST MERGE
+            //ADDED SOME LINES TO TEST MERGE
         }
     }
 }
