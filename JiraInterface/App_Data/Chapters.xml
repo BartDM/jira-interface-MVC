@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Chapters>
+  <Item nr="3.1">Weergave set omschrijving</Item>
+  <Item nr="3.2">Camera beelden</Item>
+  <Item nr="3.3">Weergave gasmetingen</Item>
+  <Item nr="3.4">Detail weergave gasmetingen in grafiek</Item>
+  <Item nr="3.5">In/uit schakelen sirene</Item>
+  <Item nr="3.6">Weergave toegangscontrole</Item>
+  <Item nr="3.7">Detail weergave toegangscontrole</Item>
+  <Item nr="3.8">Connectie problemen met de set</Item>
+  <Item nr="3.9">Sets zonder gas detectoren</Item>
+  <Item nr="4.1">Menu</Item>
+  <Item nr="4.2">Weergave software versie</Item>
+  <Item nr="4.3">Weergave proef versie</Item>
+  <Item nr="4.4">Weergave aangemelde gebruiker</Item>
+  <Item nr="4.5">Knop “Raise Alarm”</Item>
+  <Item nr="5.1">Detect sets</Item>
+  <Item nr="5.2">Scherminstellingen</Item>
+  <Item nr="5.3">Kalibratie van geconfigureerde sets</Item>
+  <Item nr="5.4">Gebruikers beheer</Item>
+  <Item nr="5.5">Exporteren en importeren van instellingen</Item>
+  <Item nr="5.6">Instellingen voor alarmen</Item>
+  <Item nr="5.7">Algemene instellingen</Item>
+  <Item nr="5.8">Reset van de applicatie</Item>
+  <Item nr="6">Functionaliteit grafische interface alarmen</Item>
+  <Item nr="7">Functionaliteit Video viewer</Item>
+  <Item nr="8">Meertaligheid ZGMS</Item>
+  <Item nr="9">Installatie ZGMS</Item>
+</Chapters>

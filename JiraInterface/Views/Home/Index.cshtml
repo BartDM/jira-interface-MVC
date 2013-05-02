@@ -1,0 +1,229 @@
+﻿@model IEnumerable<Atlassian.Jira.Issue>
+
+@{
+    ViewBag.Title = "Overzicht onvolkomenheden";
+}
+
+@section style
+{
+    <style type="text/css">
+        ul
+        {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        li
+        {
+            list-style-image: none;
+            margin: 5px 0 5px 0;
+        }
+
+        table thead th
+        {
+            cursor: pointer;
+        }
+
+    </style>
+}
+
+<h2>Overzicht onvolkomenheden</h2>
+<p>
+    Hieronder vind u een overzicht van alle gemelde onvolkomenheden voor de Z-Group
+    Monitoring Suite.
+</p>
+
+<fieldset>
+    <legend>Prioriteit</legend>
+    <p>Er zijn verschillende prioriteiten opgenomen:</p>
+    <ul>
+        <li><span class="label label-important">Blocker</span> - De ZGMS is onbruikbaar</li>
+        <li><span class="label label-important">Critical</span> - De ZGMS is bruikbaar op zich
+            maar sleutel mogelijkheden lukken niet
+        </li>
+        <li><span class="label label-warning">Major</span> - De ZGMS is volledig bruikbaar maar
+            deze fout moet dringend worden opgelost
+        </li>
+        <li><span class="label label-warning">Minor</span> - De ZGMS is volledig bruikbaar en
+            deze fout moet in een volgende versie worden
+            opgelost</li>
+        <li><span class="label label-info">Trivial</span> - De ZGMS is volledig bruikbaar en
+            deze fout moet bekeken en besproken worden
+        </li>
+        <li><span class="label label-inverse">New scope</span> - De ZGMS is volledig bruikbaar
+            zoals beschreven maar er moet functionaliteit
+            aangepast worden</li>
+    </ul>
+</fieldset>
+<fieldset>
+    <legend>Status</legend>
+    <p>Elke onvolkomenheid heeft een bepaalde status:</p>
+    <ul>
+        <li><span class="label">Open</span> - De onvolkomenheid is gemeld maar er nog geen actie
+            ondernomen.</li>
+        <li><span class="label label-warning">In Progress</span> - De onvolkomenheid wordt opgelost.
+        </li>
+        <li><span class="label label-success">Resolved</span> - De onvolkomenheid is opgelost.
+        </li>
+        <li><span class="label label-inverse">Closed</span> - De onvolkomenheid is afgesloten,
+            er is geen verdere actie meer voor nodig.</li>
+        <li><span class="label label-important">Out of scope</span> - De onvolkomenheid behoort
+            niet tot de huidige functionele omschrijving en zal niet behandeld worden in deze
+            versie.</li>
+    </ul>
+</fieldset>
+@*
+<ul>
+    @foreach (var item in ViewBag.Statusses)
+    {
+        <li>@item.Id - @item.Name</li>   
+    }
+</ul>
+*@
+<fieldset>
+    <legend>Onvolkomenheden</legend>
+
+    <p>U kan onvolkomenheden melden door op de knop 'Creëer nieuw' te drukken.</p>
+    <p>
+        <a href="@Url.Action("Create")" class="btn">Creëer nieuw</a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Prioriteit</th>
+                <th>Key
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>Titel
+                </th>
+                <th>Onderdeel
+                </th>
+                <th>Datum creatie
+                </th>
+                <th>Datum laatste update
+                </th>
+                <th>Deel acceptatie test
+                </th>
+                <th>Oplossing in</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <span
+                                @switch (item.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                                @item.Priority.Name
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Key.Value)
+                        </td>
+
+                        <td>
+                            <span 
+                                @switch (item.Status.Id)
+                                {
+                                    case "1":
+                                        @: class="label"
+                                        break;
+                                    case "3":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                    case "10000":
+                                    case "10001":
+                                        @:class="label label-success"
+                                        break;
+                                    case "6":
+                                        @: class="label label-inverse"
+                                        break;
+                                    case "10002":
+                                        @:class="label label-info"
+                                        break;
+                                    case "10013":
+                                        @:class="label label-important"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+
+                                @Html.DisplayFor(modelItem => item.Status.Name)
+                            </span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Summary)
+                            <br />
+                            <span class="description" data-content="@item.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                                meer...</span>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Environment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Created)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Updated)
+                        </td>
+                        <td>
+                            <a href="/Version#@item.AffectsVersions.FirstOrDefault()">@item.AffectsVersions.FirstOrDefault()</a>
+                        </td>
+                        <td>
+                             <a href="/Version#@item.FixVersions.FirstOrDefault()">@item.FixVersions.FirstOrDefault()</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9">Geen gemelde onvolkomenheden gevonden
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</fieldset>
+
+<div class="row">
+    <div class="span4 offset9">
+        <a href="http://www.abc-groep.be" target="_blank"><img src="http://www.abc-groep.be/siteImages/ABC/logo.jpg" alt="ABC-Groep" title="ABC-Groep"/></a>
+    </div>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(".table").tablesorter();
+        $(".description").popover();
+    </script>
+}

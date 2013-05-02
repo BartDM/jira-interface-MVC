@@ -1,0 +1,370 @@
+﻿@model IEnumerable<Atlassian.Jira.Issue>
+
+@{
+    ViewBag.Title = "Z-Group Monitoring Suite versies";
+}
+
+<h2>Overzicht Versies</h2>
+<p>
+    Hieronder vind u een overzicht van de verschillende deel acceptatie versies van
+    de Z-Group
+    Monitoring Suite V2.
+    U krijgt telkens een korte inhoud van de items die zijn opgenomen in de deel acceptatie
+    release. Tevens kan
+    u terugvinden welke onvolkomendheden zijn opgelost in de specifieke versie(s).
+</p>
+<p>
+    Tijdens de verdere ontwikkeling van de applicatie zal deze pagina worden aangepast
+    (planning, bijkomende versies, ...)
+</p>
+<fieldset>
+    <legend>Versie</legend>
+    <ul>
+        <li>
+            <h5>V2.1.0.x - Volledige oplevering<span class="label label-success pull-right">
+                Volledige oplevering</span></h5>
+            <p>
+                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
+                bepalen
+            </p>
+            <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
+            <ul>
+            </ul>
+            <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <table class="table table-bordered table-striped">
+                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.1.0.x") && i.Resolution != null))
+                {
+                    <tr>
+                        <td><span
+                                @switch (issue.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                            @issue.Priority.Name
+                        </span></td>
+                        <td>@issue.Key</td>
+                        <td>@issue.Summary</td>
+                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                            meer...</span>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <a id="V2.0.4.x"></a>
+        </li>
+        <li>
+            <h5>V2.0.4.x - Field test<span class="label label-warning pull-right">
+                Deel acceptatie test - Field test</span></h5>
+            <p>
+                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
+                bepalen
+            </p>
+            <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
+            <ul>
+            </ul>
+            <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <table class="table table-bordered table-striped">
+                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.4.x") && i.Resolution != null))
+                {
+                    <tr>
+                        <td><span
+                                @switch (issue.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                            @issue.Priority.Name
+                        </span></td>
+                        <td>@issue.Key</td>
+                        <td>@issue.Summary</td>
+                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                            meer...</span>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <a id="V2.0.3.x"></a>
+        </li>
+        <li>
+            <h5>V2.0.3.x - Meertaligheid + Installatiebestanden<span class="label label-important pull-right">
+                Deel acceptatie test - Inhouse test</span></h5>
+            <p>
+                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
+                bepalen
+            </p>
+            <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
+            <ul>
+                <li>Meertaligheid applicatie</li>
+                <li>Installatie bestanden</li>
+            </ul>
+            <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <table class="table table-bordered table-striped">
+                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.3.x") && i.Resolution != null))
+                {
+                    <tr>
+                        <td><span
+                                @switch (issue.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                            @issue.Priority.Name
+                        </span></td>
+                        <td>@issue.Key</td>
+                        <td>@issue.Summary</td>
+                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                            meer...</span>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <a id="V2.0.2.x"></a>
+        </li>
+        <li>
+            <h5>V2.0.2.x - Alle instellingen + Video viewer<span class="label label-important pull-right">
+                Deel acceptatie test - Inhouse test</span></h5>
+            <p>
+                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
+                bepalen - omstreeks week 18
+            </p>
+            <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
+            <ul>
+                <li>Menu
+                    <ul>
+                        <li>Start viewer</li>
+                        <li>Knop "Raise alarm"</li>
+                    </ul>
+                </li>
+                <li>Instellingen
+                    <ul>
+                        <li>Import - export</li>
+                        <li>Instellen alarmen</li>
+                    </ul>
+                </li>
+                <li>Grafische interface alarmen</li>
+                <li>Video viewer</li>
+            </ul>
+            <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <table class="table table-bordered table-striped">
+                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.2.x") && i.Resolution != null))
+                {
+                    <tr>
+                        <td><span
+                                @switch (issue.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                            @issue.Priority.Name
+                        </span></td>
+                        <td>@issue.Key</td>
+                        <td>@issue.Summary</td>
+                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                            meer...</span>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <a id="V2.0.1.x"></a>
+        </li>
+
+        <li>
+            <h5>V2.0.1.x - basis framework + basis settings <span class="label label-important pull-right">
+                Deel acceptatie test - Inhouse test</span></h5>
+            <p>
+                <i class="icon-calendar"></i><span class="label label-info">Release</span> Woensdag
+                10/04/2013
+            </p>
+            <h6>Opgenomen in deze versie</h6>
+            <ul>
+                <li>Weergave set
+                    <ul>
+                        <li>Weergave beelden</li>
+                        <li>Weergave gasmetingen (Modbus + Twincat)</li>
+                        <li>Detail weergave gasmetingen in grafiek</li>
+                        <li>In/uit schakelen sirene</li>
+                        <li>Weergave toegangscontrole</li>
+                        <li>Detail weergave toegangscontrole</li>
+                        <li>Weergave connectie probelemen met de set</li>
+                        <li>Sets zonder gasdetectoren</li>
+                    </ul>
+                </li>
+                <li>Menu
+                    <ul>
+                        <li>Wissel gebruiker</li>
+                        <li>Instellingen</li>
+                        <li>Afsluiten applicatie</li>
+                        <li>Weergave software versie</li>
+                        <li>Weergave proef versie</li>
+                        <li>Weergave aangemelde gebruiker</li>
+                    </ul>
+                </li>
+                <li>Instellingen
+                    <ul>
+                        <li>Detecteren van sets</li>
+                        <li>Scherminstelllingen</li>
+                        <li>Kalibratie van sets</li>
+                        <li>Gebruikersbeheer</li>
+                        <li>Algemene instellingen</li>
+                        <li>Reset van de applicatie</li>
+                    </ul>
+                </li>
+            </ul>
+                        <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <table class="table table-bordered table-striped">
+                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.1.x") && i.Resolution != null))
+                {
+                    <tr>
+                        <td><span
+                                @switch (issue.Priority.Id)
+                                {
+                                    case "1":
+                                    case "2":
+                                        @: class="label label-important"
+                                        break;
+                                    case "3":
+                                    case "4":
+                                        @: class="label label-warning"
+                                        break;
+                                    case "5":
+                                        @: class="label label-info"
+                                        break;
+                                    case "7":
+                                        @: class="label label-inverse"
+                                        break;
+                                    default:
+                                        @: class="label"
+                                        break;
+                                }
+                                >
+                            @issue.Priority.Name
+                        </span></td>
+                        <td>@issue.Key</td>
+                        <td>@issue.Summary</td>
+                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
+                            meer...</span>
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+            <p></p>
+
+            <p class="alert alert-info">
+                <i class="icon-flag"></i>&nbsp;Einde testperiode voorzien op woensdag
+                24/04/2013 !
+            </p>
+        </li>
+        <li>
+            <h5>V2.0.0.x - basis framework<span class="label label-inverse pull-right">
+                Interne testen ABC-Groep</span></h5>
+            <p>
+                Eerste versie - enkel in gebruik voor interne testen bij ABC-Groep
+            </p>
+
+            <p>
+                <i class="icon-calendar"></i><span class="label label-info">Release</span> Woensdag
+                4/03/2013
+            </p>
+            <h6>Opgenomen in deze versie</h6>
+            <ul>
+                <li>Basis framework
+                    <ul>
+                        <li>Communicationbus service</li>
+                        <li>Gasreader service</li>
+                        <li>Camera image recorder service</li>
+                        <li>Paxton reader service</li>
+                    </ul>
+                </li>
+                <li>Database optimalisatie</li>
+                <li>Integratie VLC voor opname beelden</li>
+                <li>Grafische interface
+                    <ul>
+                        <li>Optimalisatie opvragen gas meet resultaten</li>
+                        <li>Optimalisatie opbouw UI</li>
+                        <li>Optmimalisatie weergave Paxton gegevens</li>
+                    </ul>
+                </li>
+                <li>Integratie windows registry</li>
+            </ul>
+
+        </li>
+    </ul>
+</fieldset>
+
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(".description").popover();
+    </script>
+}

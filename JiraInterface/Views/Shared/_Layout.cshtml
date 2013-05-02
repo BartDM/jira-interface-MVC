@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("style", required: false)
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .description
+        {
+            text-decoration: underline;
+            color: #0088cc;
+            cursor: pointer;
+        }
+
+        .popover-content
+        {
+            width: 600px;
+            white-space: pre-line;
+        }
+
+        .popover
+        {
+            max-width: 620px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"
+                    type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">Z-Group Monitoring Suite V2</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li>
+                            <a href="@Url.Action("Index", "Home")">Home</a>
+                        </li>
+                        <li><a href="@Url.Action("Index", "Version")">Versie</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapper")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
