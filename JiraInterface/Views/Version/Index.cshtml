@@ -68,10 +68,10 @@
                     </tr>
                 }
             </table>
-            <a id="V2.0.4.x"></a>
+            <a id="V2.0.3.x"></a>
         </li>
         <li>
-            <h5>V2.0.4.x - Field test<span class="label label-warning pull-right">
+            <h5>V2.0.3.x - Field test<span class="label label-warning pull-right">
                 Deel acceptatie test - Field test</span></h5>
             <p>
                 <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
@@ -79,58 +79,6 @@
             </p>
             <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
             <ul>
-            </ul>
-            <h6>Gemelde en opgeloste onvolkomendheden</h6>
-            <table class="table table-bordered table-striped">
-                @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.4.x") && i.Resolution != null))
-                {
-                    <tr>
-                        <td><span
-                                @switch (issue.Priority.Id)
-                                {
-                                    case "1":
-                                    case "2":
-                                        @: class="label label-important"
-                                        break;
-                                    case "3":
-                                    case "4":
-                                        @: class="label label-warning"
-                                        break;
-                                    case "5":
-                                        @: class="label label-info"
-                                        break;
-                                    case "7":
-                                        @: class="label label-inverse"
-                                        break;
-                                    default:
-                                        @: class="label"
-                                        break;
-                                }
-                                >
-                            @issue.Priority.Name
-                        </span></td>
-                        <td>@issue.Key</td>
-                        <td>@issue.Summary</td>
-                        <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
-                            meer...</span>
-                        </td>
-
-                    </tr>
-                }
-            </table>
-            <a id="V2.0.3.x"></a>
-        </li>
-        <li>
-            <h5>V2.0.3.x - Meertaligheid + Installatiebestanden<span class="label label-important pull-right">
-                Deel acceptatie test - Inhouse test</span></h5>
-            <p>
-                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
-                bepalen
-            </p>
-            <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
-            <ul>
-                <li>Meertaligheid applicatie</li>
-                <li>Installatie bestanden</li>
             </ul>
             <h6>Gemelde en opgeloste onvolkomendheden</h6>
             <table class="table table-bordered table-striped">
@@ -176,8 +124,7 @@
             <h5>V2.0.2.x - Alle instellingen + Video viewer<span class="label label-important pull-right">
                 Deel acceptatie test - Inhouse test</span></h5>
             <p>
-                <i class="icon-calendar"></i><span class="label">Planning</span> Release nog te
-                bepalen - omstreeks week 18
+                <i class="icon-calendar"></i><span class="label label-info">Release</span> Vrijdag 17 mei 2013
             </p>
             <h6>Opgenomen in deze versie (planning 09/04/2013)</h6>
             <ul>
@@ -195,6 +142,9 @@
                 </li>
                 <li>Grafische interface alarmen</li>
                 <li>Video viewer</li>
+                <li>Meertaligheid applicatie</li>
+                <li>Installatie bestanden</li>
+
             </ul>
             <h6>Gemelde en opgeloste onvolkomendheden</h6>
             <table class="table table-bordered table-striped">
@@ -223,16 +173,23 @@
                                         break;
                                 }
                                 >
-                            @issue.Priority.Name
-                        </span></td>
+                                @issue.Priority.Name
+                            </span></td>
                         <td>@issue.Key</td>
                         <td>@issue.Summary</td>
                         <td><span class="description" data-content="@issue.Description" data-placement="bottom" data-trigger="click" data-title="Omschrijving">
-                            meer...</span>
+                                meer...</span>
                         </td>
                     </tr>
                 }
             </table>
+            
+            <p></p>
+
+            <p class="alert alert-info">
+                <i class="icon-flag"></i>&nbsp;Test periode tot vrijdag 31/05/2013 !
+            </p>
+
             <a id="V2.0.1.x"></a>
         </li>
 
@@ -278,7 +235,7 @@
                     </ul>
                 </li>
             </ul>
-                        <h6>Gemelde en opgeloste onvolkomendheden</h6>
+            <h6>Gemelde en opgeloste onvolkomendheden</h6>
             <table class="table table-bordered table-striped">
                 @foreach (var issue in Model.Where(i => i.FixVersions.Any(v => v.Name == "V2.0.1.x") && i.Resolution != null))
                 {
@@ -319,8 +276,8 @@
 
             <p></p>
 
-            <p class="alert alert-info">
-                <i class="icon-flag"></i>&nbsp;Einde testperiode voorzien op woensdag
+            <p class="alert alert-error">
+                <i class="icon-flag"></i>&nbsp;Test periode beëindigd op woensdag
                 24/04/2013 !
             </p>
         </li>
